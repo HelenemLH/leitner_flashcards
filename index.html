@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitner Flashcard App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="flashcard-app">
+        <h1>Leitner Flashcard Quiz</h1>
+
+        
+        <div id="topic-selection">
+            <label for="topics">Choose a topic:</label>
+            <select id="topics">
+                <option value="JavaScript">JavaScript</option>
+                <option value="HTML">HTML</option>
+                <option value="SQL">SQL</option>
+                <option value="React">React</option>
+                <option value="TypeScript">TypeScript</option>
+            </select>
+            <button id="start-quiz-btn">Start Quiz</button>
+        </div>
+
+        
+        <div id="flashcard-container" class="hidden">
+            <div class="flashcard">
+                <div id="question" class="question">Question will appear here</div>
+                <div class="answers">
+                    <div class="answer">
+                        <input type="radio" id="answerA" name="flashcard-choice" value="A">
+                        <label for="answerA" id="labelA">Answer A</label>
+                        <span id="feedbackA" class="feedback"></span>
+                    </div>
+                    <div class="answer">
+                        <input type="radio" id="answerB" name="flashcard-choice" value="B">
+                        <label for="answerB" id="labelB">Answer B</label>
+                        <span id="feedbackB" class="feedback"></span>
+                    </div>
+                    <div class="answer">
+                        <input type="radio" id="answerC" name="flashcard-choice" value="C">
+                        <label for="answerC" id="labelC">Answer C</label>
+                        <span id="feedbackC" class="feedback"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="check-answer-btn" class="hidden">Check Answer</button>
+        <button id="next-btn" class="hidden">Next Flashcard</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
