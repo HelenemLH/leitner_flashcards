@@ -1,7 +1,7 @@
 let currentCardIndex = 0;
 let flashcards = [];
 
-// Shuffle function (Fisher-Yates)
+// shuffle function (Fisher-Yates)
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -10,7 +10,7 @@ function shuffle(array) {
     return array;
 }
 
-// Fetch flashcards from the server
+// fetch flashcards from the server 
 function loadFlashcards(topic) {
     fetch(`get_flashcards.php?topic=${topic}`)
         .then(response => response.json())
@@ -18,6 +18,8 @@ function loadFlashcards(topic) {
             if (Array.isArray(data) && data.length > 0) {
                 flashcards = data;
                 displayQuestion(currentCardIndex);
+                document.getElementById("flashcard-container").classList.remove("hidden");
+                document.getElementById("check-answer-btn").classList.remove("hidden");
             } else {
                 document.getElementById("flashcard-container").innerHTML = "No flashcards available.";
             }
@@ -28,16 +30,16 @@ function loadFlashcards(topic) {
         });
 }
 
-// Display the current question and shuffled answers
+// display current question and shuffled answers
 function displayQuestion(index) {
     const flashcard = flashcards[index];
-    document.getElementById("question").innerHTML = flashcard.question;
+    document.getElementById("question").textContent = flashcard.question;
 
     const shuffledChoices = shuffle(flashcard.choices);
 
-    document.getElementById("labelA").innerHTML = shuffledChoices[0].choice;
-    document.getElementById("labelB").innerHTML = shuffledChoices[1].choice;
-    document.getElementById("labelC").innerHTML = shuffledChoices[2].choice;
+    document.getElementById("labelA").textContent = shuffledChoices[0].choice;
+    document.getElementById("labelB").textContent = shuffledChoices[1].choice;
+    document.getElementById("labelC").textContent = shuffledChoices[2].choice;
 
     document.getElementById("answerA").value = shuffledChoices[0].id;
     document.getElementById("answerB").value = shuffledChoices[1].id;
@@ -48,7 +50,7 @@ function displayQuestion(index) {
     document.getElementById("feedbackC").innerHTML = "";
 }
 
-// Check if the selected answer is correct
+// check if selected answer is correct
 function checkAnswer() {
     const selectedChoice = document.querySelector('input[name="flashcard-choice"]:checked');
     
@@ -73,19 +75,18 @@ function checkAnswer() {
     document.getElementById("next-btn").classList.remove('hidden');
 }
 
-// Move to the next flashcard
+// move to the next flashcard
 function nextFlashcard() {
     currentCardIndex = (currentCardIndex + 1) % flashcards.length;
     displayQuestion(currentCardIndex);
     document.getElementById("next-btn").classList.add('hidden');
+    document.getElementById("check-answer-btn").classList.remove('hidden');
 }
 
-// Load the flashcards automatically without selecting a topic
-document.addEventListener('DOMContentLoaded', () => {
-    const defaultTopic = 'HTML';
-    loadFlashcards(defaultTopic);
+document.getElementById("start-quiz-btn").addEventListener("click", () => {
+    const topic = document.getElementById("topics").value;
+    loadFlashcards(topic);
 });
 
-// Event listeners
 document.getElementById("check-answer-btn").addEventListener("click", checkAnswer);
 document.getElementById("next-btn").addEventListener("click", nextFlashcard);

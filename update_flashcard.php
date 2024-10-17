@@ -5,7 +5,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 $flashcard_id = $data['flashcard_id'];
 $isCorrect = $data['correct'];
 
-// Get current flashcard data
+// get current flashcard data
 $sql = "SELECT * FROM flashcards WHERE id = :flashcard_id";
 $stmt = $pdo->prepare($sql);
 $stmt->execute(['flashcard_id' => $flashcard_id]);
@@ -21,11 +21,11 @@ if ($isCorrect) {
     $box = 1;  // Go back to box 1 if incorrect
 }
 
-// Define intervals between reviews for each box
+// define intervals between reviews for each box
 $intervals = [1, 2, 5, 10, 20];  // Days between reviews for each box
 $next_review_date = date('Y-m-d', strtotime("+{$intervals[$box - 1]} days"));
 
-// Update the flashcard
+// update flashcard
 $sql = "UPDATE flashcards SET box = :box, next_review_date = :next_review_date WHERE id = :flashcard_id";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Flashcard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="flashcard-app">
+        <h1>Add a New Flashcard</h1>
+
+        <form id="add-flashcard-form">
+            <label for="question">Question:</label>
+            <input type="text" id="question" name="question" required><br>
+
+            <label for="topic">Topic:</label>
+            <select id="topic" name="topic">
+                <option value="JavaScript">JavaScript</option>
+                <option value="HTML">HTML</option>
+                <option value="SQL">SQL</option>
+            </select><br>
+
+            <label for="choiceA">Choice A:</label>
+            <input type="text" id="choiceA" name="choiceA" required><br>
+
+            <label for="choiceB">Choice B:</label>
+            <input type="text" id="choiceB" name="choiceB" required><br>
+
+            <label for="choiceC">Choice C:</label>
+            <input type="text" id="choiceC" name="choiceC" required><br>
+
+            <label for="correct">Correct Answer:</label>
+            <select id="correct" name="correct">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+            </select><br><br>
+
+            <button type="submit">Add Flashcard</button>
+        </form>
+
+        <div id="response"></div>
+    </div>
+
+    <script src="add_flashcard.js"></script>
+</body>
+</html>

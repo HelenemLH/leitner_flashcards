@@ -1,55 +1,116 @@
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #fce4ec;
-    color: #333;
+    font-family: 'Inter', sans-serif;
+    background-color: #f7f7f8;
+    color: #2e2e2e;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    min-height: 100vh;
 }
+
 
 .flashcard-app {
-    text-align: center;
-    max-width: 600px;
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
     border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
 }
 
-.flashcard {
-    margin-bottom: 20px;
-    padding: 15px;
-    background-color: #fce4ec;
-    border-radius: 8px;
-    border: 1px solid #f48fb1;
+
+h1 {
+    font-size: 2.2rem;
+    color: #333333;
+    margin-bottom: 30px;
 }
 
-.answers {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
 
-.answer {
-    display: flex;
-    align-items: center;
-}
-
-input[type="radio"] {
-    margin-right: 10px;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #e91e63;
-    color: white;
-    border: none;
+input[type="text"],
+select {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
     border-radius: 5px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+select {
+    width: auto;
+}
+
+
+#flashcard-container {
+    margin-top: 20px;
+}
+
+#flashcard-container label {
+    display: block;
+    margin: 15px 0;
+    text-align: left;
+    font-size: 1.1rem;
     cursor: pointer;
 }
 
-button.hidden {
+#flashcard-container input[type="radio"] {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+
+#feedbackA, #feedbackB, #feedbackC {
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+
+button {
+    background-color: #37352f;
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #4d4741;
+}
+
+
+#add-flashcard-link button {
+    background-color: #e5e5e5;
+    color: #2e2e2e;
+    margin-top: 40px;
+    transition: background-color 0.3s ease;
+}
+
+#add-flashcard-link button:hover {
+    background-color: #d5d5d5;
+}
+
+
+.hidden {
     display: none;
+}
+
+
+@media (max-width: 768px) {
+    .flashcard-app {
+        padding: 20px;
+    }
+
+    button {
+        width: 100%;
+    }
 }
